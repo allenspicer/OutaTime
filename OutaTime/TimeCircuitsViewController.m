@@ -159,7 +159,7 @@ self.title = @"Time Circuits";
         //    will need to fire our custom method to update the speed label.
         //
         
-     speedometerTiming = [NSTimer scheduledTimerWithTimeInterval:0.1
+     speedometerTiming = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                         target:self                                                   selector:@selector(updateSpeed)
                                                        userInfo:nil
                                                          repeats:YES];
@@ -175,6 +175,7 @@ self.title = @"Time Circuits";
     //    again.
     //
     [speedometerTiming invalidate];
+    speedometerTiming = nil;
     
 }
 
@@ -183,7 +184,7 @@ self.title = @"Time Circuits";
     //
     // 17. We need to check if the current speed variable is set to 88 yet.
     //
-    if (currentSpeed == 88)
+    if (currentSpeed != 88)
     {
         //
         // 18. If it's not yet set to 88, we want to increment the current speed variable by 1.
@@ -201,20 +202,24 @@ self.title = @"Time Circuits";
         //
         // 20. If the speed variable is at least 88, we want to stop the timer here.
         //
-        if (currentSpeed >= 88)
+        if (currentSpeed >= 88){
         //
         // 21. Then we need to update the lastTimeDepartedLabel with the value of the presentTimeLabel.
         //
-           _lastTimeDepartedLabel = _presentTimeLabel;
+        self.lastTimeDepartedLabel.text = self.presentTimeLabel.text;
         
         //
         // 22. The presentTimeLabel needs to take the value of the destinationTimeLabel here.
         //
-        _presentTimeLabel = _destinationTimeLabel;
+        self.presentTimeLabel.text = self.destinationTimeLabel.text;
         //
         // 23. Lastly, we need to reset the current speed label to 0 here.
         //
-        currentSpeed = 0;
+            currentSpeed = 0;
+            
+            [self stopTimer];
+        
+        }
     }
 }
 
