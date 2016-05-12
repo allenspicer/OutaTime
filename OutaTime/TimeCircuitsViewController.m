@@ -137,7 +137,7 @@ self.title = @"Time Circuits";
     //    there a method defined that will allow us to get the timer started?
     //
 
-    [speedometerTiming self];
+    [self startTimer];
     
 }
 
