@@ -125,7 +125,7 @@ self.title = @"Time Circuits";
     // 12. The destinationTimeLabel needs to be set to the destination date using our date formatter object
     //
 
-    self.destinationTimeLabel.text = [NSString stringWithFormat:@"%@", destinationDate];
+    self.destinationTimeLabel.text = [dateFormatter stringFromDate:destinationDate];
 }
 
 #pragma mark - Action Handlers
@@ -159,7 +159,7 @@ self.title = @"Time Circuits";
         //    will need to fire our custom method to update the speed label.
         //
         
-     speedometerTiming = [NSTimer scheduledTimerWithTimeInterval:1.0
+     speedometerTiming = [NSTimer scheduledTimerWithTimeInterval:.01
                                                         target:self                                                   selector:@selector(updateSpeed)
                                                        userInfo:nil
                                                          repeats:YES];
